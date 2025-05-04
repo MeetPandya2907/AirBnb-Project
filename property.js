@@ -852,42 +852,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set up event listeners for calendar
     if (checkInInput && checkOutInput) {
-        checkInInput.addEventListener('click', () => {
-            calendarContainer.style.display = 'block';
-            selecting = 'checkin';
-        });
+    checkInInput.addEventListener('click', () => {
+        calendarContainer.style.display = 'block';
+        selecting = 'checkin';
+    });
 
-        checkOutInput.addEventListener('click', () => {
-            calendarContainer.style.display = 'block';
-            selecting = 'checkout';
-        });
+    checkOutInput.addEventListener('click', () => {
+        calendarContainer.style.display = 'block';
+        selecting = 'checkout';
+    });
     }
 
     if (prevMonthBtn && nextMonthBtn) {
-        prevMonthBtn.addEventListener('click', () => {
-            displayedMonth.setMonth(displayedMonth.getMonth() - 1);
-            generateCalendar(displayedMonth);
-        });
+    prevMonthBtn.addEventListener('click', () => {
+        displayedMonth.setMonth(displayedMonth.getMonth() - 1);
+        generateCalendar(displayedMonth);
+    });
 
-        nextMonthBtn.addEventListener('click', () => {
-            displayedMonth.setMonth(displayedMonth.getMonth() + 1);
-            generateCalendar(displayedMonth);
-        });
+    nextMonthBtn.addEventListener('click', () => {
+        displayedMonth.setMonth(displayedMonth.getMonth() + 1);
+        generateCalendar(displayedMonth);
+    });
     }
 
     if (clearDatesBtn) {
-        clearDatesBtn.addEventListener('click', () => {
-            selectedCheckIn = null;
-            selectedCheckOut = null;
-            updateInputs();
-            generateCalendar(displayedMonth);
-        });
+    clearDatesBtn.addEventListener('click', () => {
+        selectedCheckIn = null;
+        selectedCheckOut = null;
+        updateInputs();
+        generateCalendar(displayedMonth);
+    });
     }
 
     if (closeCalendarBtn) {
-        closeCalendarBtn.addEventListener('click', () => {
-            calendarContainer.style.display = 'none';
-        });
+    closeCalendarBtn.addEventListener('click', () => {
+        calendarContainer.style.display = 'none';
+    });
     }
 
     // Close calendar when clicking outside
@@ -903,7 +903,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize
     if (calendarGrid) {
-        generateCalendar(displayedMonth);
+    generateCalendar(displayedMonth);
     }
     updateInputs();
     

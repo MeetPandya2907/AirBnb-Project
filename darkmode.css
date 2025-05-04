@@ -1,0 +1,939 @@
+/* Dark Mode Styles - Professional Airbnb Design */
+
+/* Dark mode variables - Updated to match Airbnb official dark theme */
+:root {
+  --dark-bg: #1d1d1d;
+  --dark-header-bg: #222222;
+  --dark-surface: #222222;
+  --dark-surface-2: #2d2d2d;
+  --dark-card-bg: #222222;
+  --dark-text-primary: #ffffff;
+  --dark-text-secondary: rgba(255, 255, 255, 0.8);
+  --dark-text-tertiary: rgba(255, 255, 255, 0.6);
+  --dark-border: rgba(255, 255, 255, 0.1);
+  --dark-airbnb-red: #FF385C;
+  --dark-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --dark-button-bg: #222222;
+  --dark-button-text: #ffffff;
+  --dark-input-bg: #333333;
+  --dark-search-bg: #ffffff;
+  --dark-search-text: #222222; 
+  --dark-hover: #333333;
+  --dark-active: #444444;
+  --dark-category-active: #ffffff;
+  --dark-category-inactive: rgba(255, 255, 255, 0.6);
+}
+
+/* Main Background */
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text-primary);
+}
+
+/* Header Container - Fixed design to match screenshot */
+body.dark-mode .header-container {
+  background-color: var(--dark-header-bg);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+body.dark-mode .top-nav {
+  background-color: var(--dark-header-bg);
+}
+
+/* Airbnb Logo */
+body.dark-mode .logo img {
+  filter: brightness(0) invert(1);
+}
+
+/* Search Bar - Updated to match Airbnb design */
+body.dark-mode .search-bar {
+  background-color: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .search-item,
+body.dark-mode .search-guests {
+  color: var(--dark-text-primary);
+  font-weight: 500;
+}
+
+body.dark-mode .search-divider {
+  background-color: var(--dark-border);
+}
+
+body.dark-mode .search-btn {
+  background-color: var(--dark-airbnb-red);
+  color: white;
+}
+
+body.dark-mode .search-btn svg {
+  stroke: white !important;
+}
+
+/* User Navigation */
+body.dark-mode .user-nav {
+  color: var(--dark-text-primary);
+}
+
+/* Host Button */
+body.dark-mode .host-btn {
+  color: var(--dark-text-primary);
+  background-color: transparent;
+}
+
+/* User Menu */
+body.dark-mode .user-menu {
+  background-color: var(--dark-button-bg);
+  border: 1px solid var(--dark-border);
+  border-radius: 40px;
+}
+
+body.dark-mode .menu-icon path {
+  stroke: var(--dark-text-primary) !important;
+}
+
+body.dark-mode .user-icon {
+  background-color: #717171;
+}
+
+body.dark-mode .user-icon svg path {
+  fill: var(--dark-text-primary) !important;
+}
+
+/* Globe Button */
+body.dark-mode .globe-btn {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .globe-btn svg path {
+  fill: var(--dark-text-primary) !important;
+}
+
+/* Make sure all menu icons are white in dark mode */
+body.dark-mode .dropdown-menu svg,
+body.dark-mode .dropdown-item svg,
+body.dark-mode .social-login svg,
+body.dark-mode .social-btn svg {
+  fill: var(--dark-text-primary) !important;
+  stroke: var(--dark-text-primary) !important;
+}
+
+body.dark-mode .social-btn img {
+  filter: brightness(0) invert(1);
+}
+
+/* Dropdown Menu */
+body.dark-mode .dropdown-menu {
+  background-color: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  box-shadow: var(--dark-shadow);
+  border-radius: 12px;
+}
+
+body.dark-mode .dropdown-item {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .dropdown-item:hover {
+  background-color: var(--dark-hover);
+}
+
+body.dark-mode .dropdown-divider {
+  background-color: var(--dark-border);
+}
+
+/* Categories Section */
+body.dark-mode .categories-container {
+  border-bottom: 1px solid var(--dark-border);
+}
+
+/* Categories */
+body.dark-mode .category {
+  opacity: 0.8;
+}
+
+/* Category icon images in dark mode */
+body.dark-mode .category-icon img {
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}
+
+body.dark-mode .category.active .category-icon img {
+  opacity: 1;
+}
+
+body.dark-mode .category-name {
+  color: var(--dark-category-inactive);
+}
+
+body.dark-mode .category.active .category-name {
+  color: var(--dark-category-active);
+}
+
+body.dark-mode .category.active {
+  opacity: 1;
+}
+
+body.dark-mode .category.active::after {
+  background-color: var(--dark-text-primary);
+}
+
+/* Category Navigation Buttons */
+body.dark-mode .category-nav-btn {
+  background-color: var(--dark-button-bg);
+  color: var(--dark-text-primary);
+  border: 1px solid var(--dark-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Filters Button */
+body.dark-mode .filters {
+  background-color: var(--dark-button-bg);
+  color: var(--dark-text-primary);
+  border: 1px solid var(--dark-border);
+}
+
+body.dark-mode .filter-btn {
+  background-color: var(--dark-button-bg);
+  color: var(--dark-text-primary);
+  border: 1px solid var(--dark-border);
+}
+
+/* Filter icon color fix */
+body.dark-mode .filter-icon svg path {
+  fill: var(--dark-text-primary) !important;
+}
+
+/* Properties */
+body.dark-mode .property {
+  background-color: transparent;
+}
+
+body.dark-mode .property-img-container {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+body.dark-mode .property-details {
+  background-color: transparent;
+}
+
+body.dark-mode .property h3 {
+  color: var(--dark-text-primary);
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+body.dark-mode .property p {
+  color: var(--dark-text-secondary);
+}
+
+body.dark-mode .property-price,
+body.dark-mode .property-rating {
+  color: var(--dark-text-primary);
+}
+
+/* Guest Favorite Badge */
+body.dark-mode .guest-favorite {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--dark-text-primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Property Favorite Button */
+body.dark-mode .property-favorite {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .property-favorite.active {
+  color: var(--dark-airbnb-red);
+}
+
+/* Image Navigation */
+body.dark-mode .image-arrows .arrow {
+  background-color: rgba(35, 35, 35, 0.9);
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .image-nav .image-dot {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .image-nav .image-dot.active {
+  background-color: var(--dark-text-primary);
+}
+
+body.dark-mode .arrow:hover {
+  background-color: var(--dark-surface-2);
+}
+
+/* Show Map Button */
+body.dark-mode .show-map-button {
+  background-color: var(--dark-button-bg);
+  color: var(--dark-text-primary);
+  border: 1px solid var(--dark-border);
+  border-radius: 24px;
+  padding: 12px 16px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .show-map-button svg {
+  fill: var(--dark-text-primary) !important;
+}
+
+/* Footer */
+body.dark-mode footer {
+  background-color: var(--dark-surface);
+  border-top: 1px solid var(--dark-border);
+}
+
+body.dark-mode .footer-section h3 {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .footer-links li {
+  color: var(--dark-text-secondary);
+}
+
+body.dark-mode .footer-bottom {
+  color: var(--dark-text-secondary);
+}
+
+/* Footer icons */
+body.dark-mode .footer-right svg {
+  fill: var(--dark-text-primary) !important;
+}
+
+body.dark-mode .social svg path {
+  fill: var(--dark-text-primary) !important;
+}
+
+/* Login Modal */
+body.dark-mode .login-modal-content {
+  background-color: var(--dark-surface);
+  color: var(--dark-text-primary);
+  border-radius: 12px;
+}
+
+body.dark-mode .login-modal-header {
+  border-bottom: 1px solid var(--dark-border);
+}
+
+body.dark-mode .country-dropdown select,
+body.dark-mode .phone-input input {
+  background-color: var(--dark-input-bg);
+  color: var(--dark-text-primary);
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+}
+
+body.dark-mode .continue-btn {
+  background-color: var(--dark-airbnb-red);
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+body.dark-mode .social-btn {
+  background-color: var(--dark-button-bg);
+  color: var(--dark-text-primary);
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+}
+
+/* Globe Modal - Dark Mode Styling */
+body.dark-mode .globe-modal-content {
+  background-color: var(--dark-surface);
+  color: var(--dark-text-primary);
+  border-radius: 12px;
+  box-shadow: var(--dark-shadow);
+}
+
+body.dark-mode .globe-close-btn {
+  color: var(--dark-text-primary);
+  background-color: transparent;
+}
+
+body.dark-mode .globe-tab {
+  color: var(--dark-text-tertiary);
+}
+
+body.dark-mode .globe-tab.active {
+  color: var(--dark-text-primary);
+  border-bottom: 2px solid var(--dark-text-primary);
+}
+
+body.dark-mode .translation-option {
+  background-color: var(--dark-surface-2);
+  border-radius: 8px;
+  border: 1px solid var(--dark-border);
+}
+
+body.dark-mode .translation-label span {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .translation-text {
+  color: var(--dark-text-secondary);
+}
+
+body.dark-mode .toggle-switch input:checked + .toggle-slider {
+  background-color: var(--dark-airbnb-red);
+}
+
+body.dark-mode .toggle-slider {
+  background-color: var(--dark-border);
+}
+
+body.dark-mode .globe-tab-content h3 {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .language-option, 
+body.dark-mode .currency-option {
+  background-color: var(--dark-surface-2);
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .language-option.selected,
+body.dark-mode .currency-option.selected {
+  border: 1px solid var(--dark-text-primary);
+}
+
+body.dark-mode .region,
+body.dark-mode .currency-code {
+  color: var(--dark-text-secondary);
+}
+
+/* PROPERTY PAGE SPECIFIC STYLES */
+
+/* Property Header */
+body.dark-mode .property-heading h1 {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .property-actions {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .action-button {
+  background-color: var(--dark-button-bg);
+  color: var(--dark-text-primary);
+  border: 1px solid var(--dark-border);
+  border-radius: 24px;
+  padding: 8px 16px;
+}
+
+/* Action button icons */
+body.dark-mode .action-button svg {
+  fill: var(--dark-text-primary) !important;
+  stroke: var(--dark-text-primary) !important;
+}
+
+/* Photo Grid */
+body.dark-mode .photo-grid {
+  background-color: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+body.dark-mode .photos-btn {
+  background-color: var(--dark-button-bg);
+  color: var(--dark-text-primary);
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* Property Content */
+body.dark-mode .property-info-header {
+  border-bottom: 1px solid var(--dark-border);
+}
+
+body.dark-mode .property-basics h2 {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .property-specs {
+  color: var(--dark-text-secondary);
+}
+
+body.dark-mode .section-divider {
+  background-color: var(--dark-border);
+}
+
+/* Features */
+body.dark-mode .feature {
+  background-color: var(--dark-surface-2);
+  border: 1px solid var(--dark-border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+body.dark-mode .feature-text h3 {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .feature-text p {
+  color: var(--dark-text-secondary);
+}
+
+body.dark-mode .feature-icon svg {
+  fill: var(--dark-text-primary) !important;
+}
+
+/* Airbnb Badge */
+body.dark-mode .airbnb-badge {
+  background-color: var(--dark-surface-2);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+body.dark-mode .badge-text p {
+  color: var(--dark-text-primary);
+}
+
+/* Description */
+body.dark-mode .description-text p {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .show-more {
+  color: var(--dark-text-primary);
+  background-color: transparent;
+  border: none;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/* Bedroom Cards */
+body.dark-mode .bedroom-card {
+  background-color: var(--dark-surface-2);
+  border: 1px solid var(--dark-border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+body.dark-mode .bedroom-card h3 {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .bedroom-card p {
+  color: var(--dark-text-secondary);
+}
+
+body.dark-mode .bedroom-icon svg {
+  fill: var(--dark-text-primary) !important;
+}
+
+/* Amenities */
+body.dark-mode .amenity-item {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .amenity-item span {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .amenity-icon svg {
+  fill: var(--dark-text-primary) !important;
+}
+
+body.dark-mode .show-all-amenities {
+  color: var(--dark-text-primary);
+  background-color: var(--dark-button-bg);
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* Reviews */
+body.dark-mode .reviews-section h2 {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .review-card {
+  background-color: var(--dark-surface-2);
+  border: 1px solid var(--dark-border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+body.dark-mode .reviewer-name {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .review-date {
+  color: var(--dark-text-secondary);
+}
+
+body.dark-mode .review-text {
+  color: var(--dark-text-primary);
+}
+
+/* Reviewer avatar */
+body.dark-mode .reviewer-avatar {
+  border: 2px solid var(--dark-border);
+}
+
+body.dark-mode .show-all-reviews {
+  color: var(--dark-text-primary);
+  background-color: var(--dark-button-bg);
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* Rating bars */
+body.dark-mode .rating-bar-container {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+body.dark-mode .rating-bar {
+  background-color: var(--dark-text-primary);
+  border-radius: 4px;
+}
+
+/* Location */
+body.dark-mode .location-description h3 {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .location-description p {
+  color: var(--dark-text-secondary);
+}
+
+/* Host Section */
+body.dark-mode .host-section-full {
+  background-color: var(--dark-surface-2);
+  border: 1px solid var(--dark-border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+body.dark-mode .host-info h2 {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .host-info p {
+  color: var(--dark-text-secondary);
+}
+
+body.dark-mode .host-bio p {
+  color: var(--dark-text-secondary);
+}
+
+body.dark-mode .host-stat-item {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .contact-host-btn {
+  background-color: var(--dark-button-bg);
+  color: var(--dark-text-primary);
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* Things to know */
+body.dark-mode .things-to-know-section {
+  background-color: var(--dark-surface-2);
+  border: 1px solid var(--dark-border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+body.dark-mode .things-column h3 {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .thing-item {
+  color: var(--dark-text-secondary);
+}
+
+body.dark-mode .thing-item div,
+body.dark-mode .thing-item p {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .show-more-link {
+  color: var(--dark-text-primary);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+/* Report button */
+body.dark-mode .report-btn {
+  color: var(--dark-text-primary);
+  background-color: transparent;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+body.dark-mode .report-btn svg {
+  fill: var(--dark-text-primary) !important;
+}
+
+/* Calendar */
+body.dark-mode .calendar-container {
+  background-color: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: 12px;
+  box-shadow: var(--dark-shadow);
+  padding: 24px;
+}
+
+body.dark-mode .calendar-date {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .calendar-date.selected {
+  background-color: var(--dark-text-primary);
+  color: var(--dark-bg);
+}
+
+body.dark-mode .calendar-weekday {
+  color: var(--dark-text-secondary);
+  font-weight: 500;
+}
+
+body.dark-mode .calendar-month {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .calendar-footer button {
+  color: var(--dark-text-primary);
+  background-color: transparent;
+  border: none;
+  font-weight: 500;
+}
+
+/* Booking Section */
+body.dark-mode .property-booking {
+  background-color: var(--dark-surface-2);
+  border: 1px solid var(--dark-border);
+  border-radius: 12px;
+  box-shadow: var(--dark-shadow);
+  padding: 24px;
+}
+
+body.dark-mode .booking-header {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .date-input {
+  background-color: var(--dark-input-bg);
+  color: var(--dark-text-primary);
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+body.dark-mode .booking-button {
+  background-color: var(--dark-airbnb-red);
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 12px 24px;
+}
+
+/* Mobile booking bar */
+body.dark-mode .mobile-booking-bar {
+  background-color: var(--dark-surface);
+  border-top: 1px solid var(--dark-border);
+  padding: 16px;
+}
+
+body.dark-mode .mobile-price {
+  color: var(--dark-text-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .mobile-reserve-btn {
+  background-color: var(--dark-airbnb-red);
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 12px 24px;
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--dark-button-bg);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--dark-border);
+  z-index: 1000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+body.dark-mode .dark-mode-toggle {
+  background-color: var(--dark-surface-2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+body.dark-mode .dark-mode-toggle .sun-icon {
+  display: block;
+  color: #FFC107;
+}
+
+body.dark-mode .dark-mode-toggle .moon-icon {
+  display: none;
+}
+
+.dark-mode-toggle .sun-icon {
+  display: none;
+}
+
+.dark-mode-toggle .moon-icon {
+  display: block;
+  color: #5C6BC0;
+}
+
+/* Fix for google maps in dark mode */
+body.dark-mode .map-container {
+  border: 1px solid var(--dark-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Map styles for dark mode - ensures visibility */
+body.dark-mode #map {
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+
+/* Mobile-specific dark mode styles */
+@media (max-width: 768px) {
+  body.dark-mode .header-container {
+    background-color: var(--dark-header-bg);
+  }
+  
+  body.dark-mode .top-nav {
+    background-color: var(--dark-header-bg);
+  }
+  
+  body.dark-mode .search-bar {
+    background-color: var(--dark-surface);
+  }
+  
+  body.dark-mode .mobile-booking-bar {
+    background-color: var(--dark-surface);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  body.dark-mode .expanded-search {
+    background-color: var(--dark-surface);
+    border-color: var(--dark-border);
+  }
+  
+  body.dark-mode .calendar-container {
+    max-width: 90%;
+    left: 5% !important;
+    transform: none !important;
+  }
+  
+  body.dark-mode .categories {
+    background-color: var(--dark-bg);
+  }
+  
+  body.dark-mode .category-nav-btn {
+    background-color: var(--dark-surface);
+  }
+  
+  body.dark-mode .dropdown-menu {
+    right: 10px;
+  }
+  
+  /* Ensure map is visible on mobile */
+  body.dark-mode .map-container {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+  }
+  
+  body.dark-mode .show-map-button {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+  }
+}
+
+/* Special styles for extremely small screens */
+@media (max-width: 480px) {
+  body.dark-mode .search-bar {
+    padding: 8px 12px;
+  }
+  
+  body.dark-mode .property-photos .photo-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  body.dark-mode .categories .category {
+    min-width: 60px;
+  }
+}
+
+/* Map container active state */
+body.dark-mode .map-container.active {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Price toggle in dark mode */
+body.dark-mode .price-toggle {
+  background-color: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+}
+
+body.dark-mode .price-toggle-label {
+  color: #FFFFFF; /* White text color in dark mode */
+  font-weight: 600;
+}
+
+body.dark-mode .price-tag {
+  background-color: var(--dark-airbnb-red);
+} 

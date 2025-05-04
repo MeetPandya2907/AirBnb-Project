@@ -513,15 +513,14 @@ input:checked + .toggle-slider:before {
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  aspect-ratio: 1 / 1;
-  margin-bottom: 12px;
+  aspect-ratio: 1/1;
 }
 
 .property-img-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .property:hover .property-img-container img {
@@ -530,51 +529,38 @@ input:checked + .toggle-slider:before {
 
 .property-favorite {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  font-size: 24px;
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
-  z-index: 1;
-  transition: color 0.2s ease;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .property-favorite.active {
   color: #FF385C;
 }
 
-.guest-favorite {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background-color: white;
-  color: #222;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 4px;
-  padding: 4px 8px;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.guest-favorite-icon {
-  color: #FFD700;
-  font-size: 14px;
-}
-
 .image-arrows {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 8px;
   opacity: 0;
   transition: opacity 0.2s ease;
+  z-index: 5;
 }
 
 .property-img-container:hover .image-arrows {
@@ -582,31 +568,39 @@ input:checked + .toggle-slider:before {
 }
 
 .arrow {
-  background-color: rgba(255, 255, 255, 0.9);
   width: 32px;
   height: 32px;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 16px;
   cursor: pointer;
-  margin: 0 12px;
+  transition: background-color 0.2s ease;
+  z-index: 5;
+}
+
+.arrow:hover {
+  background-color: white;
 }
 
 .image-nav {
   position: absolute;
-  bottom: 12px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 6px;
+  z-index: 5;
 }
 
 .image-dot {
   width: 6px;
   height: 6px;
-  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
 }
 
 .image-dot.active {
@@ -1492,4 +1486,26 @@ input:checked + .toggle-slider:before {
 .auth-success {
   background-color: #e8f5e9;
   color: #388e3c;
+}
+
+/* Guest favorite badge */
+.guest-favorite {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: white;
+  color: #222;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 4px 8px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.guest-favorite-icon {
+  color: #FFD700;
+  font-size: 14px;
 }

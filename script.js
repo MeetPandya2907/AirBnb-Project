@@ -179,7 +179,317 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Make categories interactive
   const categories = document.querySelectorAll('.category');
-  
+  const propertiesContainers = document.querySelectorAll('.properties');
+
+  // Category properties with each property having a unique name
+  const categoryProperties = {
+    'Farms': [
+      { id: 1, image: 'img1.jpg', location: 'Farm Estate, Maharashtra', description: 'Scenic farmhouse with open fields', price: '₹75,500', rating: '4.91', dates: '16-21 Jun' },
+      { id: 2, image: 'img2.jpg', location: 'Organic Farm, Punjab', description: 'Working farm with traditional stay', price: '₹62,800', rating: '4.87', dates: '3-8 Jul' },
+      { id: 3, image: 'img3.avif', location: 'Green Valley, Himachal', description: 'Mountain farm with apple orchards', price: '₹89,200', rating: '4.95', dates: '12-17 Aug' },
+      { id: 4, image: 'img4.avif', location: 'Rural Retreat, Karnataka', description: 'Coffee plantation with guest house', price: '₹95,500', rating: '4.89', dates: '5-10 Sep' },
+      { id: 5, image: 'img5.avif', location: 'Lavender Farm, Ooty', description: 'Aromatic lavender fields and cottage', price: '₹82,300', rating: '4.92', dates: '7-12 Jun' },
+      { id: 6, image: 'img6.jpg', location: 'Rice Fields, Kerala', description: 'Traditional house amid paddy fields', price: '₹68,750', rating: '4.88', dates: '14-19 Jul' },
+      { id: 7, image: 'img7.avif', location: 'Tea Gardens, Darjeeling', description: 'Colonial cottage in tea plantation', price: '₹91,200', rating: '4.93', dates: '21-26 Aug' },
+      { id: 8, image: 'img8.avif', location: 'Spice Farm, Goa', description: 'Aromatic spice garden with villa', price: '₹84,800', rating: '4.86', dates: '9-14 Sep' },
+      { id: 9, image: 'img9.jpg', location: 'Fruit Orchard, Maharashtra', description: 'Mango and cashew plantation home', price: '₹72,600', rating: '4.89', dates: '18-23 Jun' },
+      { id: 10, image: 'img10.jpg', location: 'Dairy Farm, Gujarat', description: 'Working dairy with luxury accommodation', price: '₹79,300', rating: '4.91', dates: '11-16 Jul' },
+      { id: 11, image: 'img11.jpg', location: 'Vegetable Farm, Himachal', description: 'Organic vegetables and herb garden', price: '₹65,900', rating: '4.87', dates: '25-30 Aug' },
+      { id: 12, image: 'img12.jpg', location: 'Horse Ranch, Rajasthan', description: 'Marwari horses and desert views', price: '₹96,400', rating: '4.94', dates: '13-18 Sep' },
+      { id: 13, image: 'img13.jpg', location: 'Sunflower Fields, Karnataka', description: 'Cottage surrounded by sunflowers', price: '₹78,200', rating: '4.90', dates: '2-7 Jun' },
+      { id: 14, image: 'img14.jpg', location: 'Honey Farm, Uttarakhand', description: 'Beekeeping experience and mountain views', price: '₹83,500', rating: '4.89', dates: '19-24 Jul' },
+      { id: 15, image: 'img15.jpg', location: 'Wheat Fields, Punjab', description: 'Traditional farmhouse with golden fields', price: '₹70,800', rating: '4.85', dates: '28-3 Aug' },
+      { id: 16, image: 'img16.jpg', location: 'Tulip Gardens, Kashmir', description: 'Seasonal tulip views with cottage', price: '₹98,700', rating: '4.96', dates: '10-15 Apr' },
+      { id: 17, image: 'img17.jpg', location: 'Almond Farm, Kashmir', description: 'Cottage amid blooming almond trees', price: '₹92,300', rating: '4.92', dates: '8-13 May' },
+      { id: 18, image: 'img1.avif', location: 'Coffee Estate, Coorg', description: 'Working coffee plantation with homestay', price: '₹86,400', rating: '4.93', dates: '17-22 Jun' },
+      { id: 19, image: 'img2.avif', location: 'Saffron Fields, Kashmir', description: 'Rare saffron farm experience', price: '₹1,05,800', rating: '4.95', dates: '20-25 Oct' },
+      { id: 20, image: 'img3.avif', location: 'Vineyard, Nashik', description: 'Wine estate with luxury cottage', price: '₹97,600', rating: '4.91', dates: '22-27 Nov' },
+      { id: 21, image: 'img4.avif', location: 'Mustard Fields, Rajasthan', description: 'Vibrant yellow fields with farmhouse', price: '₹73,200', rating: '4.87', dates: '15-20 Jan' },
+      { id: 22, image: 'img5.avif', location: 'Bamboo Farm, Assam', description: 'Bamboo cottage in sustainable farm', price: '₹67,900', rating: '4.86', dates: '3-8 Aug' },
+      { id: 23, image: 'img6.avif', location: 'Coconut Plantation, Kerala', description: 'Traditional home amid coconut trees', price: '₹81,300', rating: '4.88', dates: '12-17 Sep' },
+      { id: 24, image: 'img7.avif', location: 'Silk Farm, Karnataka', description: 'Mulberry plantation with silk production', price: '₹79,800', rating: '4.85', dates: '25-30 Jul' },
+      { id: 25, image: 'img8.avif', location: 'Flower Farm, Ooty', description: 'Colorful flower fields with cottage', price: '₹84,500', rating: '4.92', dates: '9-14 Jun' }
+    ],
+    'Icons': [
+      { id: 26, image: 'img9.jpg', location: 'Taj View, Agra', description: 'Historic home with monument view', price: '₹1,24,500', rating: '4.98', dates: '10-15 Jun' },
+      { id: 27, image: 'img10.jpg', location: 'Gateway Apartment, Mumbai', description: 'Luxury stay near Gateway of India', price: '₹1,56,800', rating: '4.92', dates: '22-27 Jul' },
+      { id: 28, image: 'img11.jpg', location: 'Victoria Villa, Kolkata', description: 'Colonial home with historic charm', price: '₹98,200', rating: '4.85', dates: '8-13 Aug' },
+      { id: 29, image: 'img12.jpg', location: 'Qutub View, Delhi', description: 'Modern apartment with monument views', price: '₹1,12,500', rating: '4.89', dates: '15-20 Sep' },
+      { id: 30, image: 'img13.jpg', location: 'Mysore Palace Stay', description: 'Heritage home near royal palace', price: '₹1,08,700', rating: '4.91', dates: '5-10 Oct' }
+    ],
+    'Amazing Pools': [
+      { id: 31, image: 'img12.jpg', location: 'Infinity Edge, Goa', description: 'Beachfront home with infinity pool', price: '₹2,15,000', rating: '4.99', dates: '5-10 Jun' },
+      { id: 32, image: 'img13.jpg', location: 'Hillside Retreat, Lonavala', description: 'Mountain villa with private pool', price: '₹1,78,600', rating: '4.93', dates: '15-20 Jul' },
+      { id: 33, image: 'img14.jpg', location: 'Royal Resort, Udaipur', description: 'Lake view with traditional pool', price: '₹1,56,200', rating: '4.95', dates: '12-17 Aug' },
+      { id: 34, image: 'img15.jpg', location: 'Modern Oasis, Bangalore', description: 'Contemporary home with lap pool', price: '₹1,32,500', rating: '4.88', dates: '7-12 Sep' },
+      { id: 35, image: 'img16.jpg', location: 'Beach Villa, Kovalam', description: 'Seaside home with sunset pool', price: '₹1,95,300', rating: '4.94', dates: '20-25 Oct' }
+    ],
+    'Design': [
+      { id: 36, image: 'img16.jpg', location: 'Architect\'s Loft, Mumbai', description: 'Award-winning architectural design', price: '₹1,52,800', rating: '4.96', dates: '15-20 Jun' },
+      { id: 37, image: 'img17.jpg', location: 'Modern Studio, Delhi', description: 'Contemporary minimal design space', price: '₹88,600', rating: '4.90', dates: '9-14 Jul' },
+      { id: 38, image: 'img1.jpg', location: 'Designer Villa, Goa', description: 'Boutique villa with artistic touches', price: '₹1,79,200', rating: '4.94', dates: '20-25 Aug' },
+      { id: 39, image: 'img2.jpg', location: 'Glass House, Lonavala', description: 'Transparent design with panoramic views', price: '₹2,05,400', rating: '4.97', dates: '12-17 Sep' },
+      { id: 40, image: 'img3.avif', location: 'Industrial Loft, Bangalore', description: 'Converted warehouse with modern design', price: '₹1,25,600', rating: '4.92', dates: '5-10 Oct' }
+    ],
+    'Earth homes': [
+      { id: 41, image: 'img2.jpg', location: 'Mud House, Rajasthan', description: 'Traditional earth house experience', price: '₹45,500', rating: '4.87', dates: '2-7 Jun' },
+      { id: 42, image: 'img3.avif', location: 'Eco Dome, Himachal', description: 'Sustainable earth dome with views', price: '₹72,800', rating: '4.85', dates: '11-16 Jul' },
+      { id: 43, image: 'img4.avif', location: 'Cave Stay, Madhya Pradesh', description: 'Modern cave-style earth home', price: '₹66,200', rating: '4.83', dates: '23-28 Aug' },
+      { id: 44, image: 'img5.avif', location: 'Earthship, Uttarakhand', description: 'Self-sufficient home with natural materials', price: '₹58,700', rating: '4.82', dates: '14-19 Sep' },
+      { id: 45, image: 'img6.jpg', location: 'Cob House, Kerala', description: 'Handcrafted cob house in natural setting', price: '₹63,400', rating: '4.86', dates: '8-13 Oct' }
+    ],
+    'National Parks': [
+      { id: 46, image: 'img5.avif', location: 'Ranthambore Edge, Rajasthan', description: 'Safari villa near tiger reserve', price: '₹1,35,500', rating: '4.92', dates: '6-11 Jun' },
+      { id: 47, image: 'img6.jpg', location: 'Jim Corbett View, Uttarakhand', description: 'Forest cabin with wildlife views', price: '₹95,800', rating: '4.89', dates: '18-23 Jul' },
+      { id: 48, image: 'img7.avif', location: 'Kanha Retreat, MP', description: 'Jungle lodge with private tours', price: '₹1,12,200', rating: '4.91', dates: '15-20 Aug' },
+      { id: 49, image: 'img8.avif', location: 'Bandipur Cottage, Karnataka', description: 'Wildlife cottage with guided walks', price: '₹86,500', rating: '4.88', dates: '9-14 Sep' },
+      { id: 50, image: 'img9.jpg', location: 'Periyar Hideaway, Kerala', description: 'Secluded stay near elephant sanctuary', price: '₹1,05,200', rating: '4.93', dates: '22-27 Oct' }
+    ],
+    'Amazing Views': [
+      { id: 51, image: 'img9.jpg', location: 'Himalayan Lookout, Uttarakhand', description: 'Mountain cabin with panoramic views', price: '₹92,500', rating: '4.94', dates: '12-17 Jun' },
+      { id: 52, image: 'img10.jpg', location: 'Coastal Villa, Kerala', description: 'Beachfront home with sea views', price: '₹1,48,800', rating: '4.96', dates: '5-10 Jul' },
+      { id: 53, image: 'img11.jpg', location: 'Valley House, Kasol', description: 'River valley views from every room', price: '₹86,200', rating: '4.90', dates: '18-23 Aug' },
+      { id: 54, image: 'img12.jpg', location: 'Sky Penthouse, Mumbai', description: 'High-rise apartment with city skyline', price: '₹2,35,600', rating: '4.95', dates: '8-13 Sep' },
+      { id: 55, image: 'img13.jpg', location: 'Tea Estate View, Munnar', description: 'Cottage overlooking tea plantations', price: '₹78,900', rating: '4.89', dates: '20-25 Oct' }
+    ],
+    'OMG!': [
+      { id: 56, image: 'img14.jpg', location: 'Treehouse Retreat, Coorg', description: 'Luxury treehouse in coffee estate', price: '₹1,25,800', rating: '4.97', dates: '5-10 Jun' },
+      { id: 57, image: 'img15.jpg', location: 'Houseboat, Alleppey', description: 'Floating luxury in Kerala backwaters', price: '₹85,400', rating: '4.93', dates: '15-20 Jul' },
+      { id: 58, image: 'img16.jpg', location: 'Desert Camp, Jaisalmer', description: 'Luxury tents in Thar desert', price: '₹92,600', rating: '4.89', dates: '12-17 Aug' },
+      { id: 59, image: 'img17.jpg', location: 'Lighthouse Stay, Goa', description: 'Converted lighthouse with ocean views', price: '₹1,78,200', rating: '4.98', dates: '7-12 Sep' },
+      { id: 60, image: 'img1.avif', location: 'Palace Suite, Jaipur', description: 'Stay in authentic royal heritage', price: '₹2,45,500', rating: '4.96', dates: '20-25 Oct' }
+    ],
+    'Beachfront': [
+      { id: 61, image: 'img2.avif', location: 'Sunset Beach Home, Goa', description: 'Direct beach access with sunset views', price: '₹1,65,800', rating: '4.95', dates: '2-7 Jun' },
+      { id: 62, image: 'img3.avif', location: 'Ocean Villa, Kovalam', description: 'Luxury villa steps from the ocean', price: '₹1,92,300', rating: '4.94', dates: '11-16 Jul' },
+      { id: 63, image: 'img4.avif', location: 'Sandy Shores, Alibaug', description: 'Beachfront bungalow with private path', price: '₹1,48,700', rating: '4.91', dates: '23-28 Aug' },
+      { id: 64, image: 'img5.avif', location: 'Bay View, Pondicherry', description: 'Colonial style home on seafront', price: '₹1,35,600', rating: '4.90', dates: '14-19 Sep' },
+      { id: 65, image: 'img6.avif', location: 'Marina Lodge, Chennai', description: 'Modern home with beach promenade view', price: '₹1,25,400', rating: '4.87', dates: '8-13 Oct' }
+    ]
+  };
+
+  // Default properties for other categories not specifically defined
+  const defaultProperties = [
+    { id: 101, image: 'img12.jpg', location: 'Beachside Bungalow, Goa', description: 'Private beach access and views', price: '₹1,25,500', rating: '4.93', dates: '20-25 Jun' },
+    { id: 102, image: 'img13.jpg', location: 'Mountain Cabin, Shimla', description: 'Cozy retreat with forest views', price: '₹78,800', rating: '4.87', dates: '8-13 Jul' },
+    { id: 103, image: 'img14.jpg', location: 'City Loft, Mumbai', description: 'Modern apartment in central location', price: '₹1,12,200', rating: '4.89', dates: '25-30 Aug' },
+    { id: 104, image: 'img15.jpg', location: 'Heritage Home, Jaipur', description: 'Traditional haveli with courtyard', price: '₹96,500', rating: '4.91', dates: '14-19 Sep' },
+    { id: 105, image: 'img16.jpg', location: 'Lake View Villa, Udaipur', description: 'Luxury home on lake shore', price: '₹1,68,200', rating: '4.95', dates: '2-7 Oct' }
+  ];
+
+  // Create HTML for a property
+  function createPropertyHTML(property) {
+    return `
+      <a href="property.html?id=${property.id}" class="property-link" style="text-decoration: none;">
+        <div class="property">
+          <div class="property-img-container">
+            ${Math.random() > 0.6 ? '<div class="guest-favorite"><span class="guest-favorite-icon">★</span> Guest favorite</div>' : ''}
+            <img src="${property.image}" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>${property.location}</h3>
+              <p>${property.description}</p>
+              <p>${property.dates}</p>
+              <p class="property-price"><span>${property.price}</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ ${property.rating}
+            </div>
+          </div>
+        </div>
+      </a>
+    `;
+  }
+
+  // Update properties based on selected category
+  function updateProperties(categoryName) {
+    // Get properties for the category or use default
+    const properties = categoryProperties[categoryName] || defaultProperties;
+    
+    // Determine how many properties to show
+    let numProperties = Math.max(3, Math.min(8, properties.length));
+    
+    // Show more properties for the Farms category
+    if (categoryName === 'Farms') {
+      numProperties = Math.min(20, properties.length); // Show up to 20 farm properties
+    }
+    
+    // Get the containers and clear them
+    propertiesContainers.forEach(container => {
+      container.innerHTML = '';
+    });
+    
+    // Fill the containers with properties
+    const firstContainer = propertiesContainers[0];
+    let propertyHTML = '';
+    
+    for (let i = 0; i < numProperties; i++) {
+      propertyHTML += createPropertyHTML(properties[i % properties.length]);
+    }
+    
+    firstContainer.innerHTML = propertyHTML;
+    
+    // Setup property interactions after updating DOM
+    initializePropertyInteractions();
+  }
+
+  // Initialize property image carousel, heart button, etc.
+  function initializePropertyInteractions() {
+    const properties = document.querySelectorAll('.property');
+    
+    properties.forEach((property, propertyIndex) => {
+      const imgContainer = property.querySelector('.property-img-container');
+      const img = imgContainer.querySelector('img');
+      const dots = imgContainer.querySelectorAll('.image-dot');
+      const prevBtn = imgContainer.querySelector('.prev-arrow');
+      const nextBtn = imgContainer.querySelector('.next-arrow');
+      const heart = imgContainer.querySelector('.property-favorite');
+      
+      // Get initial image path
+      const originalSrc = img.src;
+      let currentIndex = 0;
+      
+      // Create array of images based on file path pattern
+      let images = [];
+      
+      if (originalSrc.includes("/")) {
+        // For local files (img1.jpg, img2.jpg, etc.)
+        const fileName = originalSrc.split("/").pop(); // Get file name
+        const baseNum = fileName.match(/\d+/)[0]; // Extract number from filename
+        const extension = fileName.split('.').pop(); // Get extension
+        
+        // Available image numbers
+        const availableImgNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        
+        // Starting point based on property index to ensure variety
+        const startIndex = (propertyIndex * 3) % availableImgNumbers.length;
+        
+        // Create image paths for each dot - ensure each dot has a unique image
+        for (let i = 0; i < dots.length; i++) {
+          // Calculate a unique index for each dot
+          const imgIndex = (startIndex + i) % availableImgNumbers.length;
+          const imgNum = availableImgNumbers[imgIndex];
+          
+          // Use the same extension as the original image
+          if (i === 0) {
+            // First dot always shows the original image
+            images.push(originalSrc);
+          } else {
+            // Try to use the same extension as the original, but fall back to both formats
+            // This ensures we don't have missing images
+            if (extension === 'jpg') {
+              // If original is jpg, try to use the same img number but in avif if available
+              if (i % 2 === 0) {
+                images.push(`img${imgNum}.${extension}`);
+              } else {
+                images.push(`img${imgNum}.avif`);
+              }
+            } else {
+              // If original is avif, try to use the same img number but in jpg if available
+              if (i % 2 === 0) {
+                images.push(`img${imgNum}.${extension}`);
+              } else {
+                images.push(`img${imgNum}.jpg`);
+              }
+            }
+          }
+        }
+      } else {
+        // For remote URL images, use the variation approach
+        images = [
+          originalSrc,
+          originalSrc.replace(/\?.*$/, '?im_w=720&variation=1'),
+          originalSrc.replace(/\?.*$/, '?im_w=720&variation=2'),
+          originalSrc.replace(/\?.*$/, '?im_w=720&variation=3'),
+          originalSrc.replace(/\?.*$/, '?im_w=720&variation=4')
+        ];
+      }
+      
+      // Ensure we have the right number of images for the dots
+      while (images.length < dots.length) {
+        // If we don't have enough images, duplicate the last one
+        images.push(images[images.length - 1]);
+      }
+      
+      // Update active dot
+      function updateDots() {
+        dots.forEach((dot, index) => {
+          if (index === currentIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+      
+      // Handle previous button click
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault(); // Prevent default link behavior
+          e.stopPropagation(); // Stop event from bubbling up
+          currentIndex = (currentIndex - 1 + dots.length) % dots.length;
+          img.src = images[currentIndex];
+          updateDots();
+        });
+      }
+      
+      // Handle next button click
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault(); // Prevent default link behavior
+          e.stopPropagation(); // Stop event from bubbling up
+          currentIndex = (currentIndex + 1) % dots.length;
+          img.src = images[currentIndex];
+          updateDots();
+        });
+      }
+      
+      // Make dots clickable
+      dots.forEach((dot, index) => {
+        if (index < images.length) {
+          dot.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default link behavior
+            e.stopPropagation(); // Stop event from bubbling up
+            currentIndex = index;
+            img.src = images[currentIndex];
+            updateDots();
+          });
+        }
+      });
+      
+      // Handle heart favorite button
+      if (heart) {
+        heart.addEventListener('click', (e) => {
+          e.preventDefault(); // Prevent default link behavior
+          e.stopPropagation(); // Stop event from bubbling up
+          
+          // If user is logged in, toggle heart normally
+          if (isLoggedIn) {
+            toggleHeartState(heart);
+          } else {
+            // If not logged in, store the clicked heart and show login modal
+            currentClickedHeart = heart;
+            showLoginModal();
+          }
+        });
+      }
+    });
+  }
+
+  // Set up category click handlers
   categories.forEach(category => {
     category.addEventListener('click', () => {
       // Remove active class from all categories
@@ -187,9 +497,22 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Add active class to clicked category
       category.classList.add('active');
+      
+      // Get category name and update properties
+      const categoryName = category.querySelector('.category-name').textContent;
+      updateProperties(categoryName);
     });
   });
-  
+
+  // Initialize with the default active category
+  window.addEventListener('load', function() {
+    const activeCategory = document.querySelector('.category.active');
+    if (activeCategory) {
+      const categoryName = activeCategory.querySelector('.category-name').textContent;
+      updateProperties(categoryName);
+    }
+  });
+
   // Category navigation buttons
   const categoriesContainer = document.querySelector('.categories');
   const prevBtn = document.querySelector('.prev-btn');
@@ -285,9 +608,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (heart.innerHTML === '♡') {
       heart.innerHTML = '♥';
       heart.style.color = '#FF385C';
+      heart.classList.add('active');
     } else {
       heart.innerHTML = '♡';
-      heart.style.color = 'white';
+      heart.style.color = '';
+      heart.classList.remove('active');
     }
   }
 
@@ -329,126 +654,6 @@ document.addEventListener('DOMContentLoaded', function() {
       currentClickedHeart = null;
     }
   }
-
-  // Make image carousel work
-  const properties = document.querySelectorAll('.property');
-  
-  properties.forEach((property, propertyIndex) => {
-    const imgContainer = property.querySelector('.property-img-container');
-    const img = imgContainer.querySelector('img');
-    const dots = imgContainer.querySelectorAll('.image-dot');
-    const prevBtn = imgContainer.querySelector('.prev-arrow');
-    const nextBtn = imgContainer.querySelector('.next-arrow');
-    
-    // Get initial image path
-    const originalSrc = img.src;
-    let currentIndex = 0;
-    
-    // Create array of images based on file path pattern
-    let images = [];
-    
-    if (originalSrc.includes("/")) {
-      // For local files (img1.jpg, img2.jpg, etc.)
-      const fileName = originalSrc.split("/").pop(); // Get file name
-      const baseNum = fileName.match(/\d+/)[0]; // Extract number from filename
-      const extension = fileName.split('.').pop(); // Get extension
-      
-      // Available image numbers
-      const availableImgNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-      
-      // Starting point based on property index to ensure variety
-      const startIndex = (propertyIndex * 3) % availableImgNumbers.length;
-      
-      // Create image paths for each dot - ensure each dot has a unique image
-      for (let i = 0; i < dots.length; i++) {
-        // Calculate a unique index for each dot
-        const imgIndex = (startIndex + i) % availableImgNumbers.length;
-        const imgNum = availableImgNumbers[imgIndex];
-        
-        // Use the same extension as the original image
-        if (i === 0) {
-          // First dot always shows the original image
-          images.push(originalSrc);
-        } else {
-          // Try to use the same extension as the original, but fall back to both formats
-          // This ensures we don't have missing images
-          if (extension === 'jpg') {
-            // If original is jpg, try to use the same img number but in avif if available
-            if (i % 2 === 0) {
-              images.push(`img${imgNum}.${extension}`);
-            } else {
-              images.push(`img${imgNum}.avif`);
-            }
-          } else {
-            // If original is avif, try to use the same img number but in jpg if available
-            if (i % 2 === 0) {
-              images.push(`img${imgNum}.${extension}`);
-            } else {
-              images.push(`img${imgNum}.jpg`);
-            }
-          }
-        }
-      }
-    } else {
-      // For remote URL images, use the variation approach
-      images = [
-        originalSrc,
-        originalSrc.replace(/\?.*$/, '?im_w=720&variation=1'),
-        originalSrc.replace(/\?.*$/, '?im_w=720&variation=2'),
-        originalSrc.replace(/\?.*$/, '?im_w=720&variation=3'),
-        originalSrc.replace(/\?.*$/, '?im_w=720&variation=4')
-      ];
-    }
-    
-    // Ensure we have the right number of images for the dots
-    while (images.length < dots.length) {
-      // If we don't have enough images, duplicate the last one
-      images.push(images[images.length - 1]);
-    }
-    
-    // Update active dot
-    function updateDots() {
-      dots.forEach((dot, index) => {
-        if (index === currentIndex) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
-      });
-    }
-    
-    // Handle previous button click
-    if (prevBtn) {
-      prevBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        currentIndex = (currentIndex - 1 + dots.length) % dots.length;
-        img.src = images[currentIndex];
-        updateDots();
-      });
-    }
-    
-    // Handle next button click
-    if (nextBtn) {
-      nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        currentIndex = (currentIndex + 1) % dots.length;
-        img.src = images[currentIndex];
-        updateDots();
-      });
-    }
-    
-    // Make dots clickable
-    dots.forEach((dot, index) => {
-      if (index < images.length) {
-        dot.addEventListener('click', (e) => {
-          e.stopPropagation();
-          currentIndex = index;
-          img.src = images[currentIndex];
-          updateDots();
-        });
-      }
-    });
-  });
 
   // Header search behavior
   const searchBar = document.querySelector('.search-bar');
@@ -577,10 +782,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Map and list view elements
   const toggleMapButton = document.getElementById('toggleMapButton');
   const mapContainer = document.getElementById('mapContainer');
-  const propertiesContainers = document.querySelectorAll('.properties');
-  let mapInitialized = false;
-  let map;
-  let markers = [];
   
   // Map mode toggle
   if (toggleMapButton) {
@@ -620,7 +821,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Initialize Google Maps when API loads - called by initMap callback in index.html
+  // Function to initialize Google Maps - will be called by Google Maps API
   window.initializeGoogleMap = function() {
     console.log('Initializing Google Maps');
     const mapElement = document.getElementById('map');
@@ -631,7 +832,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     try {
       // Create a map centered on India
-      map = new google.maps.Map(mapElement, {
+      const map = new google.maps.Map(mapElement, {
         center: { lat: 22.5726, lng: 78.9629 }, // Center of India
         zoom: 5,
         mapTypeControl: false,
@@ -642,9 +843,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
       
+      // Define Indian destinations with accurate coordinates
+      const indianDestinations = {
+        "Mumbai": { lat: 19.0760, lng: 72.8777 },
+        "Delhi": { lat: 28.6139, lng: 77.2090 },
+        "Bangalore": { lat: 12.9716, lng: 77.5946 },
+        "Chennai": { lat: 13.0827, lng: 80.2707 },
+        "Kolkata": { lat: 22.5726, lng: 88.3639 },
+        "Hyderabad": { lat: 17.3850, lng: 78.4867 },
+        "Pune": { lat: 18.5204, lng: 73.8567 },
+        "Shimla": { lat: 31.1048, lng: 77.1734 },
+        "Goa": { lat: 15.2993, lng: 74.1240 },
+        "Kochi": { lat: 9.9312, lng: 76.2673 },
+        "Agra": { lat: 27.1767, lng: 78.0081 },
+        "Jaipur": { lat: 26.9124, lng: 75.7873 },
+        "Darjeeling": { lat: 27.0360, lng: 88.2627 },
+        "Varanasi": { lat: 25.3176, lng: 82.9739 },
+        "Ahmedabad": { lat: 23.0225, lng: 72.5714 },
+        "Ooty": { lat: 11.4102, lng: 76.6950 },
+        "Kerala": { lat: 10.8505, lng: 76.2711 },
+        "Udaipur": { lat: 24.5854, lng: 73.7125 },
+        "Coorg": { lat: 12.4244, lng: 75.7382 },
+        "Manali": { lat: 32.2432, lng: 77.1892 },
+        "Lonavala": { lat: 18.7546, lng: 73.4062 },
+        "Rishikesh": { lat: 30.0869, lng: 78.2676 },
+        "Amritsar": { lat: 31.6340, lng: 74.8723 },
+        "Mysore": { lat: 12.2958, lng: 76.6394 },
+        "Pondicherry": { lat: 11.9416, lng: 79.8083 }
+      };
+      
       // Add property markers to the map
       const properties = document.querySelectorAll('.property');
-      markers = [];
+      const markers = [];
       
       // Extract property data and add markers
       properties.forEach((property, index) => {
@@ -660,68 +890,70 @@ document.addEventListener('DOMContentLoaded', function() {
         const descElement = property.querySelector('.property-info p:first-of-type');
         const description = descElement ? descElement.textContent.trim() : '';
         
-        // Get coordinates from our predefined Indian destinations
+        // Get coordinates based on the location
         let coords = null;
         for (const [key, value] of Object.entries(indianDestinations)) {
-          if (location.includes(key.split(',')[0])) {
+          if (location.includes(key)) {
             coords = { lat: value.lat, lng: value.lng };
             break;
           }
         }
         
-        // If we found coordinates, add the marker
-        if (coords) {
-          // Create an info window with property details
-          const infoWindow = new google.maps.InfoWindow({
-            content: `
-              <div style="width: 200px; padding: 10px;">
-                <img src="${imgSrc}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
-                <h3 style="margin: 8px 0; font-size: 16px;">${location}</h3>
-                <p style="margin: 0; font-size: 14px; color: #717171;">${description}</p>
-                <div style="margin-top: 8px; font-weight: bold;">${price}</div>
-              </div>
-            `
-          });
-          
-          // Create marker with price label
-          const marker = new google.maps.Marker({
-            position: coords,
-            map: map,
-            icon: {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: '#FF385C',
-              fillOpacity: 1,
-              strokeColor: '#FFFFFF',
-              strokeWeight: 2,
-              scale: 12
-            },
-            label: {
-              text: price.replace(/[^\d]/g, '').substring(0, 3) + 'k',
-              color: '#FFFFFF',
-              fontSize: '11px',
-              fontWeight: 'bold'
-            },
-            originalPrice: price
-          });
-          
-          // Store the info window with the marker
-          marker.infoWindow = infoWindow;
-          
-          // Add click event to show info window
-          marker.addListener('click', () => {
-            // Close any open info windows
-            markers.forEach(m => m.infoWindow.close());
-            
-            // Open this marker's info window
-            infoWindow.open(map, marker);
-          });
-          
-          markers.push(marker);
+        // If we couldn't find matching coordinates, use a default position
+        if (!coords) {
+          coords = { lat: 22.5726, lng: 78.9629 }; // Default to center of India
         }
+        
+        // Create an info window with property details
+        const infoWindow = new google.maps.InfoWindow({
+          content: `
+            <div style="width: 200px; padding: 10px;">
+              <img src="${imgSrc}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
+              <h3 style="margin: 8px 0; font-size: 16px;">${location}</h3>
+              <p style="margin: 0; font-size: 14px; color: #717171;">${description}</p>
+              <div style="margin-top: 8px; font-weight: bold;">${price}</div>
+            </div>
+          `
+        });
+        
+        // Create marker with price label
+        const marker = new google.maps.Marker({
+          position: coords,
+          map: map,
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#FF385C',
+            fillOpacity: 1,
+            strokeColor: '#FFFFFF',
+            strokeWeight: 2,
+            scale: 12
+          },
+          label: {
+            text: price.replace(/[^\d]/g, '').substring(0, 3) + 'k',
+            color: '#FFFFFF',
+            fontSize: '11px',
+            fontWeight: 'bold'
+          },
+          originalPrice: price
+        });
+        
+        // Store the info window with the marker
+        marker.infoWindow = infoWindow;
+        
+        // Add click event to show info window
+        marker.addListener('click', () => {
+          // Close any open info windows
+          markers.forEach(m => m.infoWindow.close());
+          
+          // Open this marker's info window
+          infoWindow.open(map, marker);
+        });
+        
+        markers.push(marker);
       });
       
       // Make sure map is visible
-      mapInitialized = true;
+      window.mapInitialized = true;
       console.log('Google Maps initialized successfully with', markers.length, 'markers');
       
     } catch (error) {
@@ -739,6 +971,30 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Clear any existing content
     mapElement.innerHTML = '';
+    
+    // Define Indian destinations with accurate coordinates and positions
+    const indianDestinations = {
+      "Mumbai": { lat: 19.0760, lng: 72.8777, x: 20, y: 38 },
+      "Delhi": { lat: 28.6139, lng: 77.2090, x: 45, y: 25 },
+      "Bangalore": { lat: 12.9716, lng: 77.5946, x: 38, y: 60 },
+      "Chennai": { lat: 13.0827, lng: 80.2707, x: 45, y: 70 },
+      "Kolkata": { lat: 22.5726, lng: 88.3639, x: 65, y: 38 },
+      "Hyderabad": { lat: 17.3850, lng: 78.4867, x: 40, y: 50 },
+      "Pune": { lat: 18.5204, lng: 73.8567, x: 28, y: 45 },
+      "Shimla": { lat: 31.1048, lng: 77.1734, x: 40, y: 15 },
+      "Goa": { lat: 15.2993, lng: 74.1240, x: 20, y: 55 },
+      "Kochi": { lat: 9.9312, lng: 76.2673, x: 30, y: 70 },
+      "Agra": { lat: 27.1767, lng: 78.0081, x: 50, y: 30 },
+      "Jaipur": { lat: 26.9124, lng: 75.7873, x: 30, y: 30 },
+      "Darjeeling": { lat: 27.0360, lng: 88.2627, x: 70, y: 25 },
+      "Varanasi": { lat: 25.3176, lng: 82.9739, x: 55, y: 35 },
+      "Ahmedabad": { lat: 23.0225, lng: 72.5714, x: 25, y: 35 },
+      "Ooty": { lat: 11.4102, lng: 76.6950, x: 35, y: 65 },
+      "Kerala": { lat: 10.8505, lng: 76.2711, x: 30, y: 75 },
+      "Udaipur": { lat: 24.5854, lng: 73.7125, x: 22, y: 30 },
+      "Coorg": { lat: 12.4244, lng: 75.7382, x: 25, y: 60 },
+      "Manali": { lat: 32.2432, lng: 77.1892, x: 45, y: 15 }
+    };
     
     // Set background style
     mapElement.style.position = 'relative';
@@ -808,25 +1064,6 @@ document.addEventListener('DOMContentLoaded', function() {
     zoomControl.appendChild(zoomOut);
     mapElement.appendChild(zoomControl);
     
-    // Define Indian destinations with accurate coordinates
-    const indianDestinations = {
-      "Mumbai, Maharashtra": { lat: 19.0760, lng: 72.8777, x: 20, y: 38 },
-      "Delhi, NCR": { lat: 28.6139, lng: 77.2090, x: 45, y: 25 },
-      "Bangalore, Karnataka": { lat: 12.9716, lng: 77.5946, x: 38, y: 60 },
-      "Chennai, Tamil Nadu": { lat: 13.0827, lng: 80.2707, x: 45, y: 70 },
-      "Kolkata, West Bengal": { lat: 22.5726, lng: 88.3639, x: 65, y: 38 },
-      "Hyderabad, Telangana": { lat: 17.3850, lng: 78.4867, x: 40, y: 50 },
-      "Pune, Maharashtra": { lat: 18.5204, lng: 73.8567, x: 28, y: 45 },
-      "Shimla, Himachal Pradesh": { lat: 31.1048, lng: 77.1734, x: 40, y: 15 },
-      "Goa": { lat: 15.2993, lng: 74.1240, x: 20, y: 55 },
-      "Kochi, Kerala": { lat: 9.9312, lng: 76.2673, x: 30, y: 70 },
-      "Agra, Uttar Pradesh": { lat: 27.1767, lng: 78.0081, x: 50, y: 30 },
-      "Jaipur, Rajasthan": { lat: 26.9124, lng: 75.7873, x: 30, y: 30 },
-      "Darjeeling, West Bengal": { lat: 27.0360, lng: 88.2627, x: 70, y: 25 },
-      "Varanasi, Uttar Pradesh": { lat: 25.3176, lng: 82.9739, x: 55, y: 35 },
-      "Ahmedabad, Gujarat": { lat: 23.0225, lng: 72.5714, x: 25, y: 35 }
-    };
-    
     // Get all properties
     const properties = document.querySelectorAll('.property');
     const propertyData = [];
@@ -848,7 +1085,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Match location with coordinates
       let coordinates = { x: 50, y: 50 }; // Default center position
       for (const [key, value] of Object.entries(indianDestinations)) {
-        if (location.includes(key.split(',')[0])) {
+        if (location.includes(key)) {
           coordinates = { x: value.x, y: value.y };
           break;
         }
@@ -864,90 +1101,121 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
     
-    // Add better property marker styling
-    const addPropertyMarkers = (data) => {
-      data.forEach(property => {
-        const marker = document.createElement('div');
-        marker.classList.add('map-marker');
-        marker.textContent = property.price;
+    // Add CSS for markers
+    const style = document.createElement('style');
+    style.textContent = `
+      .map-marker {
+        position: absolute;
+        background-color: #FF385C;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        padding: 6px 8px;
+        border-radius: 24px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+        z-index: 10;
+        cursor: pointer;
+        white-space: nowrap;
+        border: 2px solid white;
+        transform: translate(-50%, -50%);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .map-marker:hover {
+        transform: translate(-50%, -50%) scale(1.05);
+        box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+        z-index: 20;
+      }
+      .marker-preview {
+        transition: opacity 0.2s;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Add property markers to the map
+    propertyData.forEach(property => {
+      const marker = document.createElement('div');
+      marker.classList.add('map-marker');
+      // Format price to be shorter
+      const numericPrice = parseInt(property.price.replace(/[^\d]/g, ''));
+      const shortPrice = numericPrice >= 100000 ? 
+        `₹${Math.round(numericPrice/1000)}k` : 
+        property.price.split('.')[0];
+      marker.textContent = shortPrice;
+      
+      // Position marker
+      marker.style.left = `${property.coordinates.x}%`;
+      marker.style.top = `${property.coordinates.y}%`;
+      
+      // Add hover effect with property preview
+      marker.addEventListener('mouseenter', () => {
+        const preview = document.createElement('div');
+        preview.classList.add('marker-preview');
+        preview.style.position = 'absolute';
+        preview.style.bottom = 'calc(100% + 10px)';
+        preview.style.left = '50%';
+        preview.style.transform = 'translateX(-50%)';
+        preview.style.width = '200px';
+        preview.style.backgroundColor = 'white';
+        preview.style.borderRadius = '8px';
+        preview.style.boxShadow = '0 2px 12px rgba(0,0,0,0.15)';
+        preview.style.zIndex = '40';
+        preview.style.overflow = 'hidden';
         
-        // Position marker
-        marker.style.left = `${property.coordinates.x}%`;
-        marker.style.top = `${property.coordinates.y}%`;
-        marker.style.transform = 'translate(-50%, -50%)';
+        const previewImg = document.createElement('img');
+        previewImg.src = property.image;
+        previewImg.style.width = '100%';
+        previewImg.style.height = '120px';
+        previewImg.style.objectFit = 'cover';
         
-        // Add hover effect with property preview
-        marker.addEventListener('mouseenter', () => {
-          const preview = document.createElement('div');
-          preview.classList.add('marker-preview');
-          preview.style.position = 'absolute';
-          preview.style.bottom = 'calc(100% + 10px)';
-          preview.style.left = '50%';
-          preview.style.transform = 'translateX(-50%)';
-          preview.style.width = '200px';
-          preview.style.backgroundColor = 'white';
-          preview.style.borderRadius = '8px';
-          preview.style.boxShadow = '0 2px 12px rgba(0,0,0,0.15)';
-          preview.style.zIndex = '40';
-          preview.style.overflow = 'hidden';
-          
-          const previewImg = document.createElement('img');
-          previewImg.src = property.image;
-          previewImg.style.width = '100%';
-          previewImg.style.height = '120px';
-          previewImg.style.objectFit = 'cover';
-          
-          const previewContent = document.createElement('div');
-          previewContent.style.padding = '12px';
-          
-          const previewTitle = document.createElement('div');
-          previewTitle.textContent = property.location;
-          previewTitle.style.fontWeight = 'bold';
-          previewTitle.style.fontSize = '14px';
-          previewTitle.style.marginBottom = '4px';
-          
-          const previewDesc = document.createElement('div');
-          previewDesc.textContent = property.description;
-          previewDesc.style.fontSize = '12px';
-          previewDesc.style.color = '#717171';
-          previewDesc.style.marginBottom = '4px';
-          
-          const previewPrice = document.createElement('div');
-          previewPrice.textContent = property.price;
-          previewPrice.style.fontWeight = 'bold';
-          
-          previewContent.appendChild(previewTitle);
-          previewContent.appendChild(previewDesc);
-          previewContent.appendChild(previewPrice);
-          
-          preview.appendChild(previewImg);
-          preview.appendChild(previewContent);
-          
-          marker.appendChild(preview);
-        });
+        const previewContent = document.createElement('div');
+        previewContent.style.padding = '12px';
         
-        marker.addEventListener('mouseleave', () => {
-          const preview = marker.querySelector('.marker-preview');
-          if (preview) {
-            preview.remove();
-          }
-        });
+        const previewTitle = document.createElement('div');
+        previewTitle.textContent = property.location;
+        previewTitle.style.fontWeight = 'bold';
+        previewTitle.style.fontSize = '14px';
+        previewTitle.style.marginBottom = '4px';
         
-        // Add click event
-        marker.addEventListener('click', () => {
-          // Show property info
-          const infoPanel = createInfoPanel(property);
-          mapElement.appendChild(infoPanel);
-        });
+        const previewDesc = document.createElement('div');
+        previewDesc.textContent = property.description;
+        previewDesc.style.fontSize = '12px';
+        previewDesc.style.color = '#717171';
+        previewDesc.style.marginBottom = '4px';
         
-        mapElement.appendChild(marker);
+        const previewPrice = document.createElement('div');
+        previewPrice.textContent = property.price;
+        previewPrice.style.fontWeight = 'bold';
+        
+        previewContent.appendChild(previewTitle);
+        previewContent.appendChild(previewDesc);
+        previewContent.appendChild(previewPrice);
+        
+        preview.appendChild(previewImg);
+        preview.appendChild(previewContent);
+        
+        marker.appendChild(preview);
       });
-    };
+      
+      marker.addEventListener('mouseleave', () => {
+        const preview = marker.querySelector('.marker-preview');
+        if (preview) {
+          preview.remove();
+        }
+      });
+      
+      // Add click event
+      marker.addEventListener('click', () => {
+        // Show property info
+        const infoPanel = createInfoPanel(property);
+        mapElement.appendChild(infoPanel);
+      });
+      
+      mapElement.appendChild(marker);
+    });
     
-    // Add markers to the map
-    addPropertyMarkers(propertyData);
-    
-    console.log('Map created successfully with', propertyData.length, 'property markers');
+    // Set map as initialized
+    window.mapInitialized = true;
+    console.log('Static map created successfully with', propertyData.length, 'property markers');
   }
   
   // Helper function to create an info panel when a marker is clicked
@@ -1012,26 +1280,18 @@ document.addEventListener('DOMContentLoaded', function() {
     return panel;
   }
 
-  // Function to generate property data with map position info
-  function getPropertiesData() {
-    return [
-      { id: 1, price: 139338, mapPosition: { x: 18, y: 42 } }, // Mumbai
-      { id: 2, price: 119139, mapPosition: { x: 39, y: 38 } }, // Kolkata
-      { id: 3, price: 214620, mapPosition: { x: 28, y: 25 } }, // Delhi
-      { id: 4, price: 178350, mapPosition: { x: 20, y: 62 } }, // Bangalore
-      { id: 5, price: 130000, mapPosition: { x: 16, y: 76 } }, // Kochi
-      { id: 6, price: 120000, mapPosition: { x: 65, y: 35 } }, // Darjeeling
-      { id: 7, price: 150000, mapPosition: { x: 48, y: 55 } }, // Hyderabad
-      { id: 8, price: 136208, mapPosition: { x: 75, y: 48 } }, // Shillong
-      { id: 9, price: 182952, mapPosition: { x: 22, y: 80 } }, // Kanyakumari
-      { id: 10, price: 194044, mapPosition: { x: 14, y: 50 } }, // Goa
-      { id: 11, price: 156780, mapPosition: { x: 30, y: 70 } }, // Chennai
-      { id: 12, price: 188227, mapPosition: { x: 45, y: 42 } }, // Nagpur
-      { id: 13, price: 110527, mapPosition: { x: 38, y: 67 } }, // Hampi
-      { id: 14, price: 106649, mapPosition: { x: 52, y: 48 } }, // Bhopal
-      { id: 15, price: 92500, mapPosition: { x: 37, y: 58 } }, // Pune
-    ];
-  }
+  // Listen for Firebase auth events
+  document.addEventListener('userLoggedIn', function(e) {
+    isLoggedIn = true;
+    if (currentClickedHeart) {
+      toggleHeartState(currentClickedHeart);
+      currentClickedHeart = null;
+    }
+  });
+  
+  document.addEventListener('userLoggedOut', function() {
+    isLoggedIn = false;
+  });
 
   // Globe button and language/currency modal
   const globeBtn = document.getElementById('globe');
@@ -1041,7 +1301,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const currencyTab = document.querySelector('.globe-tab[data-tab="currency"]');
   const languageContent = document.getElementById('language-content');
   const currencyContent = document.getElementById('currency-content');
-  
+
   // Initialize globe modal
   if (globeBtn && globeModal) {
     // Open modal when globe button is clicked
@@ -1203,61 +1463,32 @@ document.addEventListener('DOMContentLoaded', function() {
       currentCurrency = newCurrencyCode;
       
       // Update map markers if map is initialized
-      if (mapInitialized && markers.length > 0 && google && google.maps) {
+      if (window.mapInitialized && window.google && window.google.maps) {
+        const markers = document.querySelectorAll('.map-marker');
         markers.forEach(marker => {
-          const originalPrice = marker.originalPrice || '10000';
-          const numericPrice = parseFloat(originalPrice.replace(/[^\d.]/g, ''));
+          // Update price display on marker
+          const numericPrice = parseInt(marker.textContent.replace(/[^\d]/g, ''));
           const newPrice = numericPrice * conversionRate;
-          const formattedPrice = `${newSymbol}${Math.round(newPrice).toLocaleString('en-IN')}`;
           
-          // If we have marker icon update logic, update it here
-          if (marker.setIcon && marker.icon) {
-            // Update price on marker
-            const newIcon = createPriceMarkerIcon(formattedPrice);
-            marker.setIcon(newIcon);
+          // Format new price for marker
+          if (newPrice >= 100000) {
+            marker.textContent = `${newSymbol}${Math.round(newPrice/1000)}k`;
+          } else {
+            marker.textContent = `${newSymbol}${Math.round(newPrice)}`;
           }
           
-          // If we have info window with price, update it
-          if (marker.infoWindow && marker.infoWindow.setContent) {
-            const content = marker.infoWindow.getContent();
-            if (content) {
-              const updatedContent = content.replace(
-                /(<span[^>]*>)[^<]+(<\/span>)/,
-                `$1${formattedPrice}$2`
-              );
-              marker.infoWindow.setContent(updatedContent);
+          // If there's a preview open, update its price too
+          const preview = marker.querySelector('.marker-preview');
+          if (preview) {
+            const previewPrice = preview.querySelector('div:last-child');
+            if (previewPrice) {
+              previewPrice.textContent = `${newSymbol}${Math.round(newPrice).toLocaleString('en-IN')}`;
             }
           }
         });
       }
     }
-    
-    // Helper function to create price marker icon
-    function createPriceMarkerIcon(price) {
-      return {
-        path: google.maps.SymbolPath.CIRCLE,
-        fillColor: '#FF385C',
-        fillOpacity: 1,
-        strokeColor: '#FFFFFF',
-        strokeWeight: 2,
-        scale: 12,
-        labelOrigin: new google.maps.Point(0, 0)
-      };
-    }
   }
-
-  // Listen for Firebase auth events
-  document.addEventListener('userLoggedIn', function(e) {
-    isLoggedIn = true;
-    if (currentClickedHeart) {
-      toggleHeartState(currentClickedHeart);
-      currentClickedHeart = null;
-    }
-  });
-  
-  document.addEventListener('userLoggedOut', function() {
-    isLoggedIn = false;
-  });
 });
 
 const globe= document.querySelector('#globe');

@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Circular:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="darkmode.css">
   </head>
 
   
@@ -22,14 +23,7 @@
             </a>
           </div>
           
-          <!-- Mobile menu button (visible only on mobile) -->
-          <button class="mobile-menu-toggle">
-            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px;">
-              <path d="M2 16h28M2 8h28M2 24h28" stroke="#222222" stroke-width="3" stroke-linecap="round"></path>
-            </svg>
-          </button>
-          
-          <!-- Search Bar (collapsed version for mobile) -->
+          <!-- Search Bar -->
           <div class="search-container">
             <div class="search-bar">
               <div class="search-item">Anywhere</div>
@@ -39,17 +33,6 @@
               <div class="search-item search-guests">Add guests</div>
               <div class="search-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="display:block;fill:none;height:16px;width:16px;stroke:currentColor;stroke-width:4;overflow:visible" aria-hidden="true" role="presentation" focusable="false"><path fill="none" d="M13 24a11 11 0 1 0 0-22 11 11 0 0 0 0 22zm8-3 9 9"></path></svg>
-              </div>
-            </div>
-            
-            <!-- Scrolled search bar (shows when scrolling on mobile) -->
-            <div class="scrolled-search">
-              <div class="scrolled-search-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="display:block;fill:none;height:16px;width:16px;stroke:currentColor;stroke-width:3;overflow:visible"><path fill="none" d="M13 24a11 11 0 1 0 0-22 11 11 0 0 0 0 22zm8-3 9 9"></path></svg>
-              </div>
-              <div class="scrolled-search-text">
-                <div>Where to?</div>
-                <div class="scrolled-search-filters">Anywhere · Any week · Add guests</div>
               </div>
             </div>
             
@@ -144,9 +127,6 @@
               <div class="user-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 100%; width: 100%; fill: currentcolor;"><path d="M16 .7C7.56.7.7 7.56.7 16S7.56 31.3 16 31.3 31.3 24.44 31.3 16 24.44.7 16 .7zm0 28c-4.02 0-7.6-1.88-9.93-4.81a12.43 12.43 0 0 1 6.45-4.4A6.5 6.5 0 0 1 9.5 14a6.5 6.5 0 0 1 13 0 6.51 6.51 0 0 1-3.02 5.5 12.42 12.42 0 0 1 6.45 4.4A12.67 12.67 0 0 1 16 28.7z"></path></svg>
               </div>
-              
-              <!-- Notification badge -->
-              <div class="notification-badge"></div>
               
               <!-- Dropdown Menu -->
               <div class="dropdown-menu">
@@ -339,7 +319,7 @@
       <!-- Properties -->
       <div class="properties">
         <!-- Property 1 -->
-         <a href="property.html?id=1" style="text-decoration: none;">
+         <a href="property.html?id=1" class="property-link" style="text-decoration: none;">
 
            <div class="property">
              <div class="property-img-container">
@@ -351,32 +331,32 @@
                 <div class="property-favorite">♡</div>
                 <div class="image-arrows">
                   <div class="arrow prev-arrow">❮</div>
-              <div class="arrow next-arrow">❯</div>
+                  <div class="arrow next-arrow">❯</div>
+                </div>
+                <div class="image-nav">
+                  <div class="image-dot active"></div>
+                  <div class="image-dot"></div>
+                  <div class="image-dot"></div>
+                  <div class="image-dot"></div>
+                  <div class="image-dot"></div>
+                </div>
+              </div>
+              <div class="property-details">
+                <div class="property-info">
+                  <h3>Mumbai, Maharashtra</h3>
+                  <p>Beachfront apartment with sea view</p>
+                  <p>12-17 May</p>
+                  <p class="property-price"><span>₹82,918</span> <span class="price-for-nights">for 5 nights</span></p>
+                </div>
+                <div class="property-rating">
+                  ★ 4.93
+                </div>
+              </div>
             </div>
-            <div class="image-nav">
-              <div class="image-dot active"></div>
-              <div class="image-dot"></div>
-              <div class="image-dot"></div>
-              <div class="image-dot"></div>
-              <div class="image-dot"></div>
-            </div>
-          </div>
-          <div class="property-details">
-            <div class="property-info">
-              <h3>Mumbai, Maharashtra</h3>
-              <p>Beachfront apartment with sea view</p>
-              <p>12-17 May</p>
-              <p class="property-price"><span>₹82,918</span> <span class="price-for-nights">for 5 nights</span></p>
-            </div>
-            <div class="property-rating">
-              ★ 4.93
-            </div>
-          </div>
-        </div>
-        </a>
+          </a>
         
         <!-- Property 2 -->
-        <a href="property.html?id=2" style="text-decoration: none;">
+        <a href="property.html?id=2" class="property-link" style="text-decoration: none;">
         <div class="property">
           <div class="property-img-container">
             <div class="guest-favorite">
@@ -1381,5 +1361,8 @@
     
     <!-- Firebase Authentication script -->
     <script src="firebase-auth.js"></script>
+    
+    <!-- Dark Mode script -->
+    <script src="darkmode.js"></script>
   </body>
 </html>
