@@ -511,16 +511,20 @@ input:checked + .toggle-slider:before {
 
 .property-img-container {
   position: relative;
+  width: 100%;
+  padding-top: 66.67%; /* 3:2 aspect ratio */
   overflow: hidden;
   border-radius: 12px;
-  aspect-ratio: 1/1;
 }
 
 .property-img-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .property:hover .property-img-container img {
@@ -1508,4 +1512,191 @@ input:checked + .toggle-slider:before {
 .guest-favorite-icon {
   color: #FFD700;
   font-size: 14px;
+}
+
+.mobile-search-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #FF385C;
+  color: white;
+  border: none;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .mobile-visible {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 1001;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .mobile-search-close {
+    display: block !important;
+  }
+  
+  .expanded-search-container {
+    flex-direction: column;
+  }
+  
+  .expanded-search-item {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .expanded-search-button {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+/* Hamburger Menu Button with circular background */
+.hamburger-menu-btn {
+  display: none;
+  background: white;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  z-index: 100;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.hamburger-line {
+  width: 18px;
+  height: 2px;
+  background-color: #222;
+  margin: 2px 0;
+  transition: 0.3s;
+}
+
+@media (max-width: 767px) {
+  .hamburger-menu-btn {
+    display: flex;
+  }
+  
+  /* Improved search visibility on mobile */
+  .mobile-search-btn {
+    display: flex !important;
+  }
+  
+  .mobile-search-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1002;
+  }
+  
+  /* Keep hamburger button visible when scrolling */
+  .hamburger-menu-btn.fixed {
+    position: fixed;
+    top: 10px;
+  }
+  
+  /* Search results container for mobile */
+  .search-results-container {
+    padding: 0 10px;
+  }
+}
+
+/* Mobile Styles for Globe Modal, Language & Currency Selection */
+@media (max-width: 767px) {
+  .globe-modal-content {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: 0;
+    margin: 0;
+  }
+  
+  .globe-close-btn {
+    top: 16px;
+    left: 16px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .globe-tabs {
+    padding: 60px 0 10px;
+  }
+  
+  .globe-tab-content {
+    padding: 15px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .language-region-grid,
+  .currency-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  
+  .language-option,
+  .currency-option {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .region,
+  .currency-code {
+    font-size: 12px;
+  }
+  
+  .translation-option {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+  
+  .translation-label {
+    margin-bottom: 10px;
+  }
+  
+  .translation-text {
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  
+  .toggle-switch {
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+  
+  .globe-tab-content h3 {
+    font-size: 18px;
+    margin-top: 20px;
+  }
 }

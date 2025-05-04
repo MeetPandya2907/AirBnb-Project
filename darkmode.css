@@ -696,36 +696,89 @@ body.dark-mode .report-btn svg {
 /* Calendar */
 body.dark-mode .calendar-container {
   background-color: var(--dark-surface);
-  border: 1px solid var(--dark-border);
-  border-radius: 12px;
-  box-shadow: var(--dark-shadow);
-  padding: 24px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .calendar-month-year,
+body.dark-mode .calendar-month-header {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .calendar-nav-btn {
+  background-color: var(--dark-surface-2);
+  border-color: var(--dark-border);
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .calendar-nav-btn:hover {
+  background-color: var(--dark-hover);
+}
+
+body.dark-mode .calendar-day-name {
+  color: var(--dark-text-secondary);
 }
 
 body.dark-mode .calendar-date {
   color: var(--dark-text-primary);
 }
 
-body.dark-mode .calendar-date.selected {
-  background-color: var(--dark-text-primary);
-  color: var(--dark-bg);
+body.dark-mode .calendar-date:hover:not(.empty):not(.past) {
+  background-color: var(--dark-hover);
 }
 
-body.dark-mode .calendar-weekday {
+body.dark-mode .calendar-date.past {
+  color: var(--dark-text-tertiary);
+}
+
+body.dark-mode .calendar-date.today {
+  color: var(--dark-airbnb-red);
+}
+
+body.dark-mode .calendar-date.in-range {
+  background-color: rgba(255, 56, 92, 0.2);
+}
+
+body.dark-mode .calendar-footer {
+  border-top-color: var(--dark-border);
+}
+
+body.dark-mode .calendar-clear-btn {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .search-results-header {
+  border-bottom-color: var(--dark-border);
+}
+
+body.dark-mode .search-results-header h2 {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .search-results-header p {
   color: var(--dark-text-secondary);
-  font-weight: 500;
 }
 
-body.dark-mode .calendar-month {
-  color: var(--dark-text-primary);
-  font-weight: 600;
+body.dark-mode .no-results {
+  background-color: var(--dark-surface-2);
 }
 
-body.dark-mode .calendar-footer button {
+body.dark-mode .no-results h3 {
   color: var(--dark-text-primary);
-  background-color: transparent;
-  border: none;
-  font-weight: 500;
+}
+
+body.dark-mode .no-results p {
+  color: var(--dark-text-secondary);
+}
+
+body.dark-mode .mobile-search-close {
+  color: var(--dark-text-primary);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Booking Section */
@@ -930,10 +983,107 @@ body.dark-mode .price-toggle {
 }
 
 body.dark-mode .price-toggle-label {
-  color: #FFFFFF; /* White text color in dark mode */
+  color: #000000; /* Black text color in dark mode */
   font-weight: 600;
 }
 
 body.dark-mode .price-tag {
   background-color: var(--dark-airbnb-red);
+}
+
+body.dark-mode .mobile-category-menu {
+  background-color: var(--dark-surface);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .mobile-menu-header {
+  border-bottom: 1px solid var(--dark-border);
+}
+
+body.dark-mode .mobile-menu-header h3 {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .close-menu-btn {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .mobile-category-item {
+  color: var(--dark-text-primary);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+body.dark-mode .mobile-category-item.active {
+  color: var(--dark-airbnb-red);
+}
+
+body.dark-mode .mobile-category-item:hover {
+  background-color: var(--dark-hover);
+}
+
+body.dark-mode .mobile-category-icon img {
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}
+
+body.dark-mode .mobile-category-item.active .mobile-category-icon img {
+  opacity: 1;
+}
+
+body.dark-mode .mobile-search-close {
+  color: var(--dark-text-primary);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dark mode styling for globe modal */
+body.dark-mode .globe-modal-content {
+  background-color: var(--dark-surface);
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .globe-close-btn {
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .language-option,
+body.dark-mode .currency-option {
+  border-color: var(--dark-border);
+  color: var(--dark-text-primary);
+}
+
+body.dark-mode .language-option:hover,
+body.dark-mode .currency-option:hover {
+  border-color: var(--dark-accent);
+}
+
+body.dark-mode .language-option.selected,
+body.dark-mode .currency-option.selected {
+  border-color: var(--dark-accent);
+  background-color: var(--dark-hover);
+}
+
+body.dark-mode .region,
+body.dark-mode .currency-code {
+  color: var(--dark-text-secondary);
+}
+
+body.dark-mode .translation-option {
+  background-color: var(--dark-surface-2);
+}
+
+body.dark-mode .globe-tabs {
+  border-color: var(--dark-border);
+}
+
+/* Mobile-specific dark mode styles */
+@media (max-width: 767px) {
+  body.dark-mode .globe-close-btn {
+    background: rgba(0, 0, 0, 0.5);
+  }
 } 

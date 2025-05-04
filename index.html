@@ -13,6 +13,27 @@
 
   
   <body>
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+      <svg class="moon-icon" viewBox="0 0 24 24" width="24" height="24">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"></path>
+      </svg>
+      <svg class="sun-icon" viewBox="0 0 24 24" width="24" height="24">
+        <circle cx="12" cy="12" r="5" fill="currentColor"></circle>
+        <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"></line>
+        <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"></line>
+        <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"></line>
+        <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"></line>
+      </svg>
+    </button>
+    
+    <!-- Menu Overlay (for mobile menu) -->
+    <div class="menu-overlay"></div>
+    
     <div class="header-container">
       <header>
         <div class="top-nav">
@@ -150,6 +171,26 @@
     
     <!-- Categories and filters container -->
     <div class="container">
+      <!-- Mobile Hamburger Menu Button -->
+      <button class="hamburger-menu-btn">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      
+      <!-- Mobile Category Menu (Hidden by default) -->
+      <div class="mobile-category-menu">
+        <div class="mobile-menu-header">
+          <h3>Categories</h3>
+          <button class="close-menu-btn">&times;</button>
+        </div>
+        <div class="mobile-menu-content">
+          <ul class="mobile-categories-list">
+            <!-- Categories will be populated with JavaScript -->
+          </ul>
+        </div>
+      </div>
+      
       <!-- Categories with arrow navigation -->
       <div class="categories-container">
         <button class="category-nav-btn prev-btn">
@@ -159,61 +200,61 @@
         </button>
         
       <div class="categories">
-        <div class="category active">
+        <div class="category active" data-name="Farms">
           <div class="category-icon">
             <img src="i1.jpg" alt="">
           </div>
           <div class="category-name">Farms</div>
         </div>
-        <div class="category">
+        <div class="category" data-name="Icons">
           <div class="category-icon">
             <img src="i2.webp" alt="">
           </div>
           <div class="category-name">Icons</div>
         </div>
-        <div class="category">
+        <div class="category" data-name="Amazing Pools">
           <div class="category-icon">
             <img src="i3.jpg" alt="">
           </div>
           <div class="category-name">Amazing Pools</div>
         </div>
-        <div class="category">
+        <div class="category" data-name="Design">
           <div class="category-icon">
             <img src="i4.jpg" alt="">
           </div>
           <div class="category-name">Design</div>
         </div>
-        <div class="category">
+        <div class="category" data-name="Earth homes">
           <div class="category-icon">
             <img src="i5.jpg" alt="">
           </div>
           <div class="category-name">Earth homes</div>
         </div>
-        <div class="category">
+        <div class="category" data-name="National Parks">
           <div class="category-icon">
             <img src="i6.jpg" alt="">
           </div>
           <div class="category-name">National Parks</div>
         </div>
-        <div class="category">
+        <div class="category" data-name="Amazing Views">
           <div class="category-icon">
             <img src="i7.jpg" alt="">
           </div>
           <div class="category-name">Amazing Views</div>
         </div>
-        <div class="category">
+        <div class="category" data-name="OMG!">
           <div class="category-icon">
             <img src="i8.jpg" alt="">
           </div>
           <div class="category-name">OMG!</div>
         </div>
-        <div class="category">
+        <div class="category" data-name="Beachfront">
           <div class="category-icon">
             <img src="i9.jpg" alt="">
           </div>
           <div class="category-name">Beachfront</div>
         </div>
-        <div class="category">
+        <div class="category" data-name="Lake">
           <div class="category-icon">
             <img src="i10.jpg" alt="">
           </div>
@@ -1364,5 +1405,94 @@
     
     <!-- Dark Mode script -->
     <script src="darkmode.js"></script>
+    
+    <!-- Custom fixes script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Ensure mobile search button is visible
+        const mobileSearchBtn = document.querySelector('.mobile-search-btn');
+        if (!mobileSearchBtn && window.innerWidth <= 767) {
+          const newMobileSearchBtn = document.createElement('button');
+          newMobileSearchBtn.className = 'mobile-search-btn';
+          newMobileSearchBtn.innerHTML = `
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="display:block;fill:none;height:16px;width:16px;stroke:currentColor;stroke-width:3;overflow:visible">
+              <circle cx="14" cy="14" r="9"></circle>
+              <path d="M20 20L25 25"></path>
+            </svg>
+          `;
+          document.body.appendChild(newMobileSearchBtn);
+          
+          // When clicked, show the expanded search
+          newMobileSearchBtn.addEventListener('click', function() {
+            const expandedSearch = document.querySelector('.expanded-search');
+            if (expandedSearch) {
+              expandedSearch.classList.add('mobile-visible');
+              document.body.style.overflow = 'hidden';
+            }
+          });
+        }
+        
+        // Ensure Farm category shows all 25 properties
+        setTimeout(function() {
+          const activeCategory = document.querySelector('.category.active');
+          if (activeCategory && activeCategory.getAttribute('data-name') === 'Farms') {
+            // Force refresh of farm properties
+            activeCategory.click();
+          }
+        }, 500);
+      });
+    </script>
+    
+    <!-- Custom fixes script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Fix for globe modal on mobile
+        const globeModal = document.getElementById('globeModal');
+        const globeBtn = document.getElementById('globe');
+        
+        if (globeBtn && globeModal) {
+          // Ensure globe button is properly set up
+          globeBtn.addEventListener('click', function() {
+            globeModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            
+            // On mobile devices, make sure modal takes full screen
+            if (window.innerWidth <= 767) {
+              const modalContent = document.querySelector('.globe-modal-content');
+              if (modalContent) {
+                modalContent.style.height = '100%';
+                modalContent.style.maxHeight = '100%';
+                modalContent.style.width = '100%';
+                modalContent.style.borderRadius = '0';
+                modalContent.style.margin = '0';
+              }
+              
+              // Improve scrolling on language and currency lists
+              const tabContents = document.querySelectorAll('.globe-tab-content');
+              tabContents.forEach(function(content) {
+                content.style.WebkitOverflowScrolling = 'touch';
+                content.style.overflowY = 'auto';
+              });
+              
+              // Make sure grids are properly sized
+              const grids = document.querySelectorAll('.language-region-grid, .currency-grid');
+              grids.forEach(function(grid) {
+                grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+                grid.style.gap = '8px';
+              });
+            }
+          });
+          
+          // Close button handler
+          const closeBtn = document.querySelector('.globe-close-btn');
+          if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+              globeModal.classList.remove('show');
+              document.body.style.overflow = '';
+            });
+          }
+        }
+      });
+    </script>
   </body>
 </html>
