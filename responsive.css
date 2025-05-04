@@ -1,0 +1,444 @@
+/* Responsive Styles for Airbnb Clone */
+
+/* Base Mobile Styles (for phones) */
+@media screen and (max-width: 767px) {
+  /* Header Styles */
+  .top-nav {
+    padding: 10px 15px !important;
+    flex-wrap: wrap;
+  }
+  
+  .logo img {
+    height: 24px;
+  }
+  
+  .search-container {
+    order: 3;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .search-bar {
+    width: 100%;
+    height: 40px;
+  }
+  
+  .expanded-search {
+    width: 100%;
+    transform: none;
+    height: auto;
+    flex-direction: column;
+    left: 0;
+    padding: 10px;
+  }
+  
+  .expanded-search-container {
+    flex-direction: column;
+  }
+  
+  .expanded-search-item {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .search-item:not(:first-child),
+  .search-divider {
+    display: none;
+  }
+  
+  .host-btn {
+    display: none;
+  }
+  
+  /* Category Styles */
+  .categories-container {
+    overflow-x: auto;
+    padding: 10px 0;
+  }
+  
+  .categories {
+    gap: 15px;
+  }
+  
+  .category-icon img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .category-name {
+    font-size: 10px;
+  }
+  
+  .right-controls {
+    display: none;
+  }
+  
+  /* Property Grid Styles */
+  .properties {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px 0;
+  }
+  
+  .property-img-container {
+    aspect-ratio: 1 / 0.8;
+  }
+  
+  /* Property Page Styles */
+  .property-heading h1 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  
+  .property-actions {
+    margin-top: 10px;
+  }
+  
+  .photo-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .photo-large {
+    width: 100%;
+    height: auto;
+  }
+  
+  .photo-small {
+    display: none;
+  }
+  
+  .property-content {
+    flex-direction: column;
+  }
+  
+  .property-info {
+    width: 100%;
+    padding-right: 0;
+  }
+  
+  .property-booking {
+    width: 100%;
+    position: static;
+    margin-top: 20px;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .bedroom-cards {
+    flex-direction: column;
+  }
+  
+  .bedroom-card {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .amenities-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .review-card {
+    padding: 12px;
+  }
+  
+  .host-details-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .things-to-know-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .things-column {
+    margin-bottom: 20px;
+  }
+  
+  /* Calendar Styles */
+  .calendar-container {
+    width: 100%;
+    left: 0;
+    transform: none;
+  }
+  
+  /* Map Styles */
+  .map-container {
+    height: calc(100vh - 60px);
+    top: 60px;
+  }
+  
+  .show-map-button {
+    width: 90%;
+    max-width: 280px;
+  }
+  
+  /* Footer Styles */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  /* Login Modal Styles */
+  .login-modal-content {
+    width: 90%;
+    max-width: 320px;
+  }
+  
+  .social-btn {
+    font-size: 12px;
+  }
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .properties {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .property-content {
+    flex-direction: column;
+  }
+  
+  .property-info {
+    width: 100%;
+    padding-right: 0;
+  }
+  
+  .property-booking {
+    width: 100%;
+    position: static;
+    margin-top: 20px;
+  }
+  
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .things-to-know-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Additional Property Page Specific Styles */
+@media screen and (max-width: 767px) {
+  .main-container {
+    padding: 0 15px;
+  }
+  
+  .photo-grid {
+    border-radius: 0;
+    margin: 0 -15px;
+  }
+  
+  .photos-btn {
+    bottom: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .property-info-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .property-basics h2 {
+    font-size: 18px;
+  }
+  
+  .property-specs {
+    font-size: 14px;
+    flex-wrap: wrap;
+  }
+  
+  .host-profile {
+    align-self: flex-start;
+  }
+  
+  .feature-highlights {
+    flex-direction: column;
+  }
+  
+  .feature {
+    margin-bottom: 15px;
+  }
+  
+  .show-more, 
+  .show-all-amenities, 
+  .show-all-reviews {
+    width: 100%;
+    padding: 12px;
+  }
+  
+  .location-map iframe {
+    height: 250px;
+  }
+  
+  .calendar-grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+  
+  .calendar-date {
+    height: 35px;
+    width: 35px;
+    font-size: 12px;
+  }
+  
+  /* Fixed booking bar for mobile */
+  .mobile-booking-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 10px 15px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .mobile-price {
+    font-weight: bold;
+  }
+  
+  .mobile-reserve-btn {
+    background-color: #FF385C;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+}
+
+/* Floating header for scroll on mobile */
+@media screen and (max-width: 767px) {
+  .header-container.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .header-container.scrolled .logo,
+  .header-container.scrolled .search-container {
+    display: none;
+  }
+  
+  .header-container.scrolled .top-nav {
+    padding: 8px 15px !important;
+  }
+  
+  .header-container.scrolled .user-nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .scrolled-search {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  
+  .scrolled-search-icon {
+    margin-right: 8px;
+  }
+  
+  body.fixed-header {
+    padding-top: 60px;
+  }
+  
+  /* Touch-friendly adjustments */
+  .property-favorite,
+  .image-arrows .arrow,
+  .category,
+  .feature,
+  .amenity-item,
+  .review-card,
+  .contact-host-btn,
+  .report-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  input, select, button {
+    min-height: 44px;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+}
+
+/* Landscape mode adjustments */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  .photo-grid {
+    aspect-ratio: auto;
+    height: 50vh;
+  }
+  
+  .bedroom-cards {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .bedroom-card {
+    min-width: 200px;
+  }
+}
+
+/* Improved property photo gallery navigation for mobile */
+@media screen and (max-width: 767px) {
+  .mobile-gallery-nav {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    z-index: 3;
+  }
+  
+  .mobile-gallery-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5);
+    margin: 0 3px;
+  }
+  
+  .mobile-gallery-dot.active {
+    background-color: white;
+  }
+  
+  .image-arrows {
+    opacity: 1;
+  }
+} 
